@@ -11,8 +11,8 @@ dependencies:
     specifier: ^1.11.10
     version: 1.11.10
   element-plus:
-    specifier: ^2.6.3
-    version: 2.6.3(vue@3.4.21)
+    specifier: file:./element-plus
+    version: file:element-plus(vue@3.4.21)
   vue:
     specifier: ^3.4.21
     version: 3.4.21(typescript@5.2.2)
@@ -997,31 +997,6 @@ packages:
     resolution: {integrity: sha512-5nLE0TWFFpZ80Crhtp4pIp8LXCztjYX41yUcV6b+bKR2PqzjskTMOOlBi1VjBHlvHwS+4gar7kNKOrsbsewEZQ==}
     dev: false
 
-  /element-plus@2.6.3(vue@3.4.21):
-    resolution: {integrity: sha512-U4L/mr+1r+EmAUYUHrs0V/8hHMdBGP07rPymSC72LZCN4jK1UwygQYICegTQ5us4mxeqBvW6wfoEfo003fwCqw==}
-    peerDependencies:
-      vue: ^3.2.0
-    dependencies:
-      '@ctrl/tinycolor': 3.6.1
-      '@element-plus/icons-vue': 2.3.1(vue@3.4.21)
-      '@floating-ui/dom': 1.6.3
-      '@popperjs/core': /@sxzz/popperjs-es@2.11.7
-      '@types/lodash': 4.17.0
-      '@types/lodash-es': 4.17.12
-      '@vueuse/core': 9.13.0(vue@3.4.21)
-      async-validator: 4.2.5
-      dayjs: 1.11.10
-      escape-html: 1.0.3
-      lodash: 4.17.21
-      lodash-es: 4.17.21
-      lodash-unified: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)
-      memoize-one: 6.0.0
-      normalize-wheel-es: 1.2.0
-      vue: 3.4.21(typescript@5.2.2)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-    dev: false
-
   /entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
@@ -1369,3 +1344,31 @@ packages:
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
     dev: true
+
+  file:element-plus(vue@3.4.21):
+    resolution: {directory: element-plus, type: directory}
+    id: file:element-plus
+    name: element-plus
+    version: 0.0.0-dev.1
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@ctrl/tinycolor': 3.6.1
+      '@element-plus/icons-vue': 2.3.1(vue@3.4.21)
+      '@floating-ui/dom': 1.6.3
+      '@popperjs/core': /@sxzz/popperjs-es@2.11.7
+      '@types/lodash': 4.17.0
+      '@types/lodash-es': 4.17.12
+      '@vueuse/core': 9.13.0(vue@3.4.21)
+      async-validator: 4.2.5
+      dayjs: 1.11.10
+      escape-html: 1.0.3
+      lodash: 4.17.21
+      lodash-es: 4.17.21
+      lodash-unified: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)
+      memoize-one: 6.0.0
+      normalize-wheel-es: 1.2.0
+      vue: 3.4.21(typescript@5.2.2)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+    dev: false
