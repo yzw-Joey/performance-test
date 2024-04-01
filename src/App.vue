@@ -1,30 +1,80 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <el-table-v2
+    :columns="columns"
+    :data="data"
+    :width="1800"
+    :height="1100"
+    fixed
+  />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<script lang="tsx" setup>
+import { ref } from 'vue';
+import dayjs from 'dayjs';
+import {
+  ElButton,
+  ElIcon,
+  ElTag,
+  ElTooltip,
+  TableV2FixedDir,
+} from 'element-plus';
+import { Timer } from '@element-plus/icons-vue';
+
+import type { Column } from 'element-plus';
+
+let id = 0;
+
+const dataGenerator = () => ({
+  id: `random-id-${++id}`,
+  name: 'Tom',
+  date: '2020-10-1',
+});
+
+const fakeColumns = new Array(10).fill(null).map((_) => ({
+  key: 'name',
+  title: 'Name',
+  dataKey: 'name',
+  width: 150,
+  align: 'center',
+  cellRenderer: ({ cellData: name }) => <ElTag>{name}</ElTag>,
+}));
+
+const columns: Column<any>[] = [
+  {
+    key: 'date',
+    title: 'Date',
+    dataKey: 'date',
+    width: 150,
+    fixed: TableV2FixedDir.LEFT,
+    cellRenderer: ({ cellData: date }) => (
+      <ElTooltip content={dayjs(date).format('YYYY/MM/DD')}>
+        {
+          <span class='flex items-center'>
+            <ElIcon class='mr-3'>
+              <Timer />
+            </ElIcon>
+            {dayjs(date).format('YYYY/MM/DD')}
+          </span>
+        }
+      </ElTooltip>
+    ),
+  },
+  ...fakeColumns,
+  {
+    key: 'operations',
+    title: 'Operations',
+    cellRenderer: () => (
+      <>
+        <ElButton size='small'>Edit</ElButton>
+        <ElButton size='small' type='danger'>
+          Delete
+        </ElButton>
+      </>
+    ),
+    width: 150,
+    align: 'center',
+  },
+];
+
+const data = ref(Array.from({ length: 200 }).map(dataGenerator));
+</script>
